@@ -75,22 +75,22 @@ def print_policy(A):
             if isWall(i, j):
                 continue
             # Try North
-            if (i - 1) >= 0:
+            if (i - 1) >= 0 and isWall(i - 1, j) == False:
                 U.append(A[i - 1][j])
             else:
                 U.append(A[i][j])
             # Try South
-            if (i + 1) < N:
+            if (i + 1) < N and isWall(i+1,j) == False:
                 U.append(A[i + 1][j])
             else:
                 U.append(A[i][j])
             # Try East
-            if (j + 1) < M:
+            if (j + 1) < M and isWall(i,j+1) == False:
                 U.append(A[i][j + 1])
             else:
                 U.append(A[i][j])
             # Try West
-            if (j - 1) >= 0:
+            if (j - 1) >= 0 and isWall(i,j-1) == False:
                 U.append(A[i][j - 1])
             else:
                 U.append(A[i][j])
