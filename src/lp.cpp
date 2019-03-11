@@ -66,55 +66,55 @@ int main()
                 continue;
             // Consider the north
             if((i - 1) >= 0 && !isWall(mapping[i - 1][j])){
-                A[mapping[i][j]][mapping[i][j]][0] = 0.8;
-                A[mapping[i - 1][j]][mapping[i][j]][0] = -0.8;
+                A[mapping[i][j]][mapping[i][j]][0] += 0.8;
+                A[mapping[i - 1][j]][mapping[i][j]][0] += -0.8;
             }
             if((j - 1) >= 0 && !isWall(mapping[i][j - 1])){
-                A[mapping[i][j]][mapping[i][j]][0] = 0.1;
-                A[mapping[i][j - 1]][mapping[i][j]][0] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][0] += 0.1;
+                A[mapping[i][j - 1]][mapping[i][j]][0] += -0.1;
             }
             if((j + 1) < 4 && !isWall(mapping[i][j + 1])){
-                A[mapping[i][j]][mapping[i][j]][0] = 0.1;
-                A[mapping[i][j + 1]][mapping[i][j]][0] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][0] += 0.1;
+                A[mapping[i][j + 1]][mapping[i][j]][0] += -0.1;
             }
             // Consider South
             if((i + 1) < 4 && !isWall(mapping[i + 1][j])){
-                A[mapping[i][j]][mapping[i][j]][1] = 0.8;
-                A[mapping[i + 1][j]][mapping[i][j]][1] = -0.8;
+                A[mapping[i][j]][mapping[i][j]][1] += 0.8;
+                A[mapping[i + 1][j]][mapping[i][j]][1] += -0.8;
             }
             if((j - 1) >= 0 && !isWall(mapping[i][j - 1])){
-                A[mapping[i][j]][mapping[i][j]][1] = 0.1;
-                A[mapping[i][j - 1]][mapping[i][j]][1] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][1] += 0.1;
+                A[mapping[i][j - 1]][mapping[i][j]][1] += -0.1;
             }
             if((j + 1) < 4 && !isWall(mapping[i][j + 1])){
-                A[mapping[i][j]][mapping[i][j]][1] = 0.1;
-                A[mapping[i][j + 1]][mapping[i][j]][1] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][1] += 0.1;
+                A[mapping[i][j + 1]][mapping[i][j]][1] += -0.1;
             }
             // Consider West
             if((j + 1) < 4 && !isWall(mapping[i][j + 1])){
-                A[mapping[i][j]][mapping[i][j]][2] = 0.8;
-                A[mapping[i][j + 1]][mapping[i][j]][2] = -0.8;
+                A[mapping[i][j]][mapping[i][j]][2] += 0.8;
+                A[mapping[i][j + 1]][mapping[i][j]][2] += -0.8;
             }
             if((i - 1) >= 0 && !isWall(mapping[i - 1][j])){
-                A[mapping[i][j]][mapping[i][j]][2] = 0.1;
-                A[mapping[i - 1][j]][mapping[i][j]][2] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][2] += 0.1;
+                A[mapping[i - 1][j]][mapping[i][j]][2] += -0.1;
             }
             if((i + 1) < 4 && !isWall(mapping[i + 1][j])){
-                A[mapping[i][j]][mapping[i][j]][2] = 0.1;
-                A[mapping[i + 1][j]][mapping[i][j]][2] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][2] += 0.1;
+                A[mapping[i + 1][j]][mapping[i][j]][2] += -0.1;
             }
             // Consider East
             if((j - 1) >= 0 && !isWall(mapping[i][j - 1])){
-                A[mapping[i][j]][mapping[i][j]][3] = 0.8;
-                A[mapping[i][j - 1]][mapping[i][j]][3] = -0.8;
+                A[mapping[i][j]][mapping[i][j]][3] += 0.8;
+                A[mapping[i][j - 1]][mapping[i][j]][3] += -0.8;
             }
             if((i - 1) >= 0 && !isWall(mapping[i - 1][j])){
-                A[mapping[i][j]][mapping[i][j]][3] = 0.1;
-                A[mapping[i - 1][j]][mapping[i][j]][3] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][3] += 0.1;
+                A[mapping[i - 1][j]][mapping[i][j]][3] += -0.1;
             }
             if((i + 1) < 4 && !isWall(mapping[i + 1][j])){
-                A[mapping[i][j]][mapping[i][j]][3] = 0.1;
-                A[mapping[i + 1][j]][mapping[i][j]][3] = -0.1;
+                A[mapping[i][j]][mapping[i][j]][3] += 0.1;
+                A[mapping[i + 1][j]][mapping[i][j]][3] += -0.1;
             }
         }
     }
