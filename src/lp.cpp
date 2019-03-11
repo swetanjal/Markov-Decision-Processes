@@ -127,6 +127,12 @@ int main()
             cout << "x" << j << k << "   \t    ";
     }
     cout << endl << endl;
+    for(int j = 0; j < 16; ++j)
+    {
+        for(int k = 0; k < 4; ++k)
+            cout << reward[j] << "   \t    ";
+    }
+    cout << endl << endl;
     for(int i = 0; i < 16; ++i){
         for(int j = 0; j < 16; ++j){
             for(int k = 0; k < 4; ++k){
