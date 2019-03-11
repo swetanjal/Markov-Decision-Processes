@@ -25,6 +25,7 @@ for i in range(W):
     a.append(int(inp[0]))
     a.append(int(inp[1]))
     walls.append(a)
+    grid[a[0]][a[1]] = '-'
 start = raw_input().split()
 start[0] = int(start[0])
 start[1] = int(start[1])
