@@ -30,7 +30,7 @@ start = raw_input().split()
 start[0] = int(start[0])
 start[1] = int(start[1])
 step_reward = float(raw_input())
-gamma = 1.0
+gamma = 0.99
 ################## End of input ################################
 ################## Some Helper Functions #######################
 def isWall(r, c):
@@ -52,7 +52,7 @@ def terminate(a, b):
                 continue
             if isGoal(i, j):
                 continue
-            if (a[i][j] - b[i][j]) > (b[i][j] / 100):
+            if abs(a[i][j] - b[i][j]) > (abs(b[i][j]) * 1.0 / 100):
                 #Some cell has increased by more than 1% of previous value. Therefore, don't terminate
                 return False
     return True
@@ -76,25 +76,81 @@ def print_policy(A):
             if isWall(i, j):
                 continue
             # Try North
+            tmp = 0
             if (i - 1) >= 0 and isWall(i - 1, j) == False:
-                U.append(A[i - 1][j])
+                tmp = tmp + A[i - 1][j]*0.8
             else:
-                U.append(A[i][j])
+                tmp = tmp + 0.8 * A[i][j]
+
+            if (j - 1) >= 0 and isWall(i, j - 1) == False:
+                tmp = tmp + A[i][j - 1] * 0.1
+            else:
+                tmp = tmp + A[i][j] * 0.1
+            if (j + 1) < M and not isWall(i, j + 1):
+                tmp = tmp + A[i][j + 1] * 0.1
+            else:
+                tmp = tmp + A[i][j] * 0.1
+            U.append(tmp)
             # Try South
+            tmp = 0
             if (i + 1) < N and isWall(i+1,j) == False:
-                U.append(A[i + 1][j])
+                tmp = tmp + 0.8 * A[i + 1][j]
             else:
-                U.append(A[i][j])
+                tmp = tmp + 0.8 * A[i][j]
+            
+            if (j - 1) >= 0 and isWall(i, j - 1) == False:
+                tmp = tmp + 0.1 * A[i][j - 1]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            if (j + 1) < M and isWall(i, j + 1) == False:
+                tmp = tmp + 0.1 * A[i][j + 1]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            U.append(tmp)
             # Try East
+            tmp = 0
+
             if (j + 1) < M and isWall(i,j+1) == False:
-                U.append(A[i][j + 1])
+                tmp = tmp + 0.8*A[i][j + 1]
             else:
-                U.append(A[i][j])
+                tmp = tmp + 0.8*A[i][j]
+
+            if (i + 1) < N and isWall(i+1,j) == False:
+                tmp = tmp + 0.1*A[i + 1][j]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            if (i - 1) >= 0 and isWall(i-1,j) == False:
+                tmp = tmp + 0.1*A[i-1][j]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            U.append(tmp)
             # Try West
+
+            tmp = 0
+
             if (j - 1) >= 0 and isWall(i,j-1) == False:
-                U.append(A[i][j - 1])
+                tmp = tmp + 0.8*A[i][j-1]
             else:
-                U.append(A[i][j])
+                tmp = tmp + 0.8*A[i][j]
+            
+            if (i + 1) < N and isWall(i+1, j) == False:
+                tmp = tmp + 0.1*A[i + 1][j]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            if (i - 1) >= 0 and isWall(i-1, j) == False:
+                tmp = tmp + 0.1*A[i-1][j]
+            else:
+                tmp = tmp + 0.1 * A[i][j]
+
+            U.append(tmp)
+
+
+
             MAX = max(U)
             if U[0] == MAX:
                 policy[i][j] = 'N'
